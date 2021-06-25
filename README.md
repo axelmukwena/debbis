@@ -1,24 +1,11 @@
-# README
+### Deploy [biometricECG](https://github.com/axelmukwena/biometricECG) models using Ruby Web Client and [Flask API](https://github.com/axelmukwena/debbis-api)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Full Documentation available at https://github.com/axelmukwena/biometricECG README.md
 
-Things you may want to cover:
+API avaiable at https://github.com/axelmukwena/debbis-api
 
-* Ruby version
+[![GPLv3 license](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![](https://img.shields.io/badge/Ruby-3.0.0%2B-green.svg)]()
+![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Get in touch on Twitter <a href="https://twitter.com/axelmukwena">@axelmukwena</a>
