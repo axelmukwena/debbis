@@ -1,0 +1,100 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+/* https://css-tricks.com/snippets/css/using-font-face/ */
+@font-face {
+    font-family: 'Montserrat-Black';
+    src:  url('Montserrat-Black.woff2') format('woff2');
+}
+
+body {
+    background-color: #111010;
+}
+
+.text-yellow {
+    color: #ffa200;
+}
+
+.spinner-color {
+    color: #bebebe;
+}
+
+.btn-yellow {
+    color: #000;
+    background-color: #ffa200;
+    border-color: #ffa200;
+}
+
+.btn-yellow:hover {
+    color: #000;
+    background-color: #ffc107;
+    border-color: #ffc107;
+}
+
+.btn:focus,.btn:active {
+    outline: none !important;
+    box-shadow: none;
+}
+
+.form-control, .form-control:focus{
+    border: 1px solid #212121;
+    box-shadow: none;
+    background-color: #212121;
+    color: #bebebe;
+}
+
+.text-gray {
+    color: #bebebe;
+}
+
+.identity {
+    font-size: 15em;
+}
+
+@media (max-width: 991px) {
+    .identity {
+        font-size: 6em;
+    }
+}
+
+.authenticated {
+    font-size: 5em;
+}
+
+@media (max-width: 991px) {
+    .authenticated {
+        font-size: 3em;
+    }
+}
+
+.validated {
+    font-size: 3em;
+}
+
+@media (max-width: 991px) {
+    .validated {
+        font-size: 2em;
+    }
+}
+
+.image {
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+
+.form-custom {
+    line-height: 2.2;
+}

@@ -1,0 +1,195 @@
+<div class="container m-0" style="background-color: #09981e; max-width: 100% !important;">
+  <div class="d-flex flex-column justify-content-center min-vh-100">
+
+    <br>
+    <div class="row justify-content-center">
+      <div class="col-md-11 text-center">
+
+        <%= link_to "Home", root_path, class: "p-2 text-light small text-decoration-none" %>
+        <%= link_to "Enroll", new_member_path, class: "p-2 text-light small text-decoration-none" %>
+        <%= link_to "Help", how_path, class: "p-2 text-light small text-decoration-none" %>
+        <%= link_to @count.to_s + " members", members_path, class: "p-2 text-light small text-decoration-none" %>
+
+        <hr class="text-light" style="margin-bottom: 8px; margin-top: 8px;">
+      </div>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col text-center">
+        <div class=" fw-bolder text-light" style="font-size: 1.3em;">
+          <%= check(@member.name) %>
+        </div>
+        <span class="text-light">
+          Node: <%= @member.node %>, <%= check(@member.gender) %>, <%= check(@member.age) %> years old
+        </span>
+      </div>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col text-center">
+      <span class="text-light text-decoration-none authenticated"
+            style="font-family: Montserrat-Black, sans-serif;">
+        Let's have some fun...
+      </span>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="row justify-content-center">
+        <div class="col p-3">
+          <div class="card border-0" style="width: auto;">
+            <%= image_tag("games/bumpercar300200.jpeg", class: "img-responsive image", alt: "Bumper Car") %>
+            <div class="card-body">
+              <h5 class="card-title">Bumper Car</h5>
+              <p class="card-text">
+                Try to remove all cars by bumping the same cars with each other. Drag a car to remove it.
+              </p>
+              <button class="btn btn-dark" type="button" id="one">Play Now</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col p-3">
+          <div class="card border-0" style="width: auto;">
+            <%= image_tag("games/tictactoe300200.jpeg", class: "img-responsive image", alt: "Tic Tac Toe") %>
+            <div class="card-body">
+              <h5 class="card-title">Tic Tac Toe</h5>
+              <p class="card-text">
+                Play the classic Tic Tac Toe game in 3 rounds. Be the first to get 3 of your symbols in a row.
+              </p>
+              <button class="btn btn-dark" type="button" id="two">Play Now</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col p-3">
+          <div class="card border-0" style="width: auto;">
+            <%= image_tag("games/tapman300200.jpeg", class: "img-responsive image", alt: "Tapman") %>
+            <div class="card-body">
+              <h5 class="card-title">Tapman</h5>
+              <p class="card-text">
+                Classic Pacman game. Eat all the yellow dots and avoid the ghosts.
+              </p>
+              <button class="btn btn-dark" type="button" id="three">Play Now</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row justify-content-center">
+        <div class="col p-3">
+          <div class="card border-0" style="width: auto;">
+            <%= image_tag("games/retrobricks300200.jpeg", class: "img-responsive image", alt: "Retro Bricks") %>
+            <div class="card-body">
+              <h5 class="card-title">Retro Bricks</h5>
+              <p class="card-text">
+                Tetris game in retro style. Drop down bricks and complete full horizontal lines.
+              </p>
+              <button class="btn btn-dark" type="button" id="four">Play Now</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col p-3">
+          <div class="card border-0" style="width: auto;">
+            <%= image_tag("games/towerofhanoi300200.jpeg", class: "img-responsive image", alt: "Tower of Hanoi") %>
+            <div class="card-body">
+              <h5 class="card-title">Tower of Hanoi</h5>
+              <p class="card-text">
+                Classic mind game. Move the tower from the left to the right.
+                You can only stack smaller parts on bigger parts and not vice versa.
+              </p>
+              <button class="btn btn-dark" type="button" id="five">Play Now</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col p-3">
+          <div class="card border-0" style="width: auto;">
+            <%= image_tag("games/classicsnake300200.jpeg", class: "img-responsive image", alt: "Classic Snake") %>
+            <div class="card-body">
+              <h5 class="card-title">Classic Snake</h5>
+              <p class="card-text">
+                Collect all the dots and avoid bumping into the wall or your tail.
+              </p>
+              <button class="btn btn-dark" type="button" id="six">Play Now</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <br>
+    <br>
+
+    <div id="frame">
+      <br>
+      <hr class="text-light" style="border: 2px solid; margin-bottom: 8px; margin-top: 8px;">
+      <br>
+
+      <div class="row justify-content-center">
+        <div class="col-md-7 text-center">
+          <span id="show-one">
+            <script src="https://cdn.htmlgames.com/embed.js?game=BumperCar&amp;bgcolor=white"></script>
+          </span>
+
+          <span id="show-two">
+            <script src="https://cdn.htmlgames.com/embed.js?game=TicTacToe&amp;bgcolor=white"></script>
+          </span>
+
+          <span id="show-three">
+            <script src="https://cdn.htmlgames.com/embed.js?game=Tapman&amp;bgcolor=white"></script>
+          </span>
+
+          <span id="show-four">
+            <script src="https://cdn.htmlgames.com/embed.js?game=RetroBricks&amp;bgcolor=white"></script>
+          </span>
+
+          <span id="show-five">
+            <script src="https://cdn.htmlgames.com/embed.js?game=TowerOfHanoi&amp;bgcolor=white"></script>
+          </span>
+
+          <span id="show-six">
+            <script src="https://cdn.htmlgames.com/embed.js?game=ClassicSnake&amp;bgcolor=white"></script>
+          </span>
+        </div>
+      </div>
+
+      <br>
+      <br>
+    </div>
+
+  </div>
+</div>
+
+<script>
+    document.getElementById("frame").hidden = true
+    hideFrames()
+
+    show(document.getElementById("one"), "one")
+    show(document.getElementById("two"), "two")
+    show(document.getElementById("three"), "three")
+    show(document.getElementById("four"), "four")
+    show(document.getElementById("five"), "five")
+    show(document.getElementById("six"), "six")
+
+    function show(game, frame) {
+        game.addEventListener("click", function () {
+            hideFrames()
+            document.getElementById("frame").hidden = false
+            document.getElementById("show-" + frame).hidden = false
+            window.scrollTo(0, document.body.scrollHeight)
+        })
+    }
+
+    function hideFrames() {
+        document.getElementById("show-one").hidden = true
+        document.getElementById("show-two").hidden = true
+        document.getElementById("show-three").hidden = true
+        document.getElementById("show-four").hidden = true
+        document.getElementById("show-five").hidden = true
+        document.getElementById("show-six").hidden = true
+    }
+</script>

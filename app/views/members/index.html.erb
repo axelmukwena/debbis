@@ -1,0 +1,54 @@
+<div class="col p-md-4">
+  <div class="row justify-content-center">
+    <div class="col-md-10 text-center">
+
+      <%= render "shared/menu" %>
+
+      <hr style="margin-bottom: 8px; margin-top: 8px; color: #666666;">
+    </div>
+  </div>
+
+  <div class="row row-cols-md-4 justify-content-center">
+
+    <% @members.each do | member | %>
+      <div class="card m-3" style="width: 18rem; background-color: #343434">
+        <div class="card-body">
+
+          <%= link_to member.identity, member_path(member), class: "text-yellow text-decoration-none",
+                      style: "font-size: 5em; font-family: Montserrat-Black, sans-serif" %>
+          <div class="fw-bolder text-gray"><%= check(member.name) %></div>
+          <span class="card-text text-gray" style="font-size: 0.8em;">
+            Node: <%= member.node %>, <%= check(member.gender) %>, <%= (member.age) %> yrs old
+          </span>
+
+          <hr style="margin-bottom: 8px; margin-top: 8px; color: #666666;">
+
+          <div class="row">
+
+            <div class="col d-flex flex-column justify-content-center">
+              <span class="text-secondary" style="font-size: 0.8em;">
+                <%= member.created_at.strftime("%d %b %Y") %>
+              </span>
+            </div>
+
+            <div class="col-1">
+              <%= button_to edit_member_path(member), class: "btn p-0 m-0", method: :get,
+                            style: "position: relative; right: 1em;" do %>
+                <a class="bi bi-pencil text-secondary"></a>
+              <% end %>
+            </div>
+
+            <div class="col-1">
+              <%= button_to member_path(member), class: "btn p-0 m-0", method: :delete,
+                            data: {confirm: "Are you sure?"}, style: "position: relative; right: 1em;" do %>
+                <a class="bi bi-trash text-secondary"></a>
+              <% end %>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

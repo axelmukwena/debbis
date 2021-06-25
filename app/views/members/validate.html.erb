@@ -1,0 +1,66 @@
+<div class="container">
+
+  <div class="d-flex flex-column justify-content-center min-vh-100">
+
+    <div class="row justify-content-center">
+      <div class="col text-center">
+        <div class="text-light identity" id="identity" style="font-family: Montserrat-Black, sans-serif;">
+          <span class="spinner-grow text-yellow" style="width: 1.3em; height: 1.3em"></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-md-4 text-center">
+
+        <div class=" fw-bolder text-gray" style="font-size: 1.3em;">
+          <%= check(@member.name) %>
+        </div>
+        <span class="card-text text-gray" style="font-size: 1em;">
+            Node: <%= @member.node %>, <%= check(@member.gender) %>, <%= check(@member.age) %> years old
+        </span>
+      </div>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-md-4 text-center" style="margin-bottom: 0">
+        <div class="col d-flex flex-column justify-content-center">
+              <span class="text-secondary" style="font-size: 0.8em;">
+                Successfully Validated. Enrolled on <%= @member.created_at.strftime("%d %b %Y") %>
+              </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-md-7 text-center" style="margin-bottom: 0">
+        <div class="col d-flex flex-column justify-content-center">
+              <strong class="text-yellow validated">
+                <small>authenticating</small>
+              </strong>
+        </div>
+      </div>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col text-center" style="margin-bottom: 0">
+        <div class="col d-flex flex-column justify-content-center">
+          <div class="text-yellow small">
+            <%= $data %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-md-5 text-center">
+        <hr style="margin-bottom: 8px; margin-top: 8px; color: #666666;">
+
+        <%= render "shared/menu" %>
+
+      </div>
+    </div>
+
+  </div>
+
+</div>

@@ -1,0 +1,138 @@
+<div class="container">
+
+  <div class="d-flex flex-column justify-content-center min-vh-100">
+
+    <div class="row justify-content-center">
+      <div class="col text-center">
+        <div class="text-light identity" id="identity" style="font-family: Montserrat-Black, sans-serif;">
+          <%= @member.identity %>
+        </div>
+      </div>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-md-4 text-center">
+
+        <div class=" fw-bolder text-gray" style="font-size: 1.3em;">
+          <%= check(@member.name) %>
+        </div>
+        <span class="card-text text-gray" style="font-size: 1em;">
+            Node: <%= @member.node %>, <%= check(@member.gender) %>, <%= check(@member.age) %> years old
+        </span>
+      </div>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-md-2" style="margin-bottom: 0">
+        <div class="row justify-content-center">
+
+          <div class="col d-flex flex-column justify-content-center">
+              <span class="text-secondary" style="font-size: 0.8em;">
+                <%= @member.created_at.strftime("%d %b %Y") %>
+              </span>
+          </div>
+
+          <div class="col-1">
+            <%= button_to edit_member_path(@member), class: "btn p-0 m-0", method: :get,
+                          style: "position: relative; right: 1em;" do %>
+              <a class="bi bi-pencil text-secondary"></a>
+            <% end %>
+          </div>
+
+          <div class="col-1">
+            <%= button_to member_path(@member), class: "btn p-0 m-0", method: :delete,
+                          data: {confirm: "Are you sure?"}, style: "position: relative; right: 1em;" do %>
+              <a class="bi bi-trash text-secondary"></a>
+            <% end %>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-md-6" style="margin-bottom: 0">
+        <hr style="margin-bottom: 8px; margin-top: 8px; color: #666666;">
+      </div>
+    </div>
+
+    <% if check_templates(@member) %>
+
+      <div class="row justify-content-center">
+        <div class="col-md-6" style="margin-bottom: 0">
+
+          <div class="row justify-content-center">
+
+            <div class="col-6" style="">
+              <strong class="text-yellow" style="font-size: 1em;">
+                Template ID: <%= @template.id %>, Created: <%= @template.created_at.strftime("%d %B %Y") %>
+              </strong>
+            </div>
+
+            <div class="col-1">
+              <%= button_to unenroll_member_path(@member), class: "btn p-0 m-0", method: :post,
+                            data: {confirm: "Are you sure?"}, style: "float: left;" do %>
+                <a class="bi bi-trash text-danger"></a>
+              <% end %>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    <% else %>
+
+      <div class="row justify-content-center">
+        <div class="col-md-6" style="margin-bottom: 0.5em; margin-top: 0.5em;">
+          <%= form_with url: enroll_member_path(@member) do |f| %>
+            <div class="input-group">
+              <%= f.file_field :signals, accept: "text/plain", class: "form-control form-custom",
+                               id: "input-file", "aria-label": "Upload" %>
+            </div>
+
+            <span class="text-danger" id="toggle-error" style="font-size: 0.8em" hidden>
+              Please input data file
+            </span>
+
+            <button class="btn btn-lg btn-block w-100 fw-bolder" type="button" id="submit"
+                    style="background-color: #ffa200; margin-top: 0.5em"></button>
+
+            <%= f.submit "Validate", class: "btn btn-yellow", id: "validate", hidden: "hidden"%>
+          <% end %>
+        </div>
+      </div>
+
+    <% end %>
+
+    <div class="row justify-content-center">
+      <div class="col-md-6 text-center">
+        <hr style="margin-bottom: 8px; margin-top: 8px; color: #666666;">
+
+        <%= render "shared/menu" %>
+
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+    document.getElementById('toggle-error').hidden = true
+    var submitBtn = document.getElementById("submit")
+    submitBtn.innerHTML = "Submit Templates"
+    submitBtn.addEventListener("click", function () {
+        proof()
+    })
+
+    function proof() {
+        if (document.getElementById('input-file').value === "") {
+            document.getElementById('toggle-error').hidden = false
+        }
+        else {
+            document.getElementById('toggle-error').hidden = true
+            submitBtn.innerHTML = 'Enrolling...'
+            document.getElementById("validate").click()
+            document.getElementById("identity").innerHTML = '<span class="spinner-grow spinner-color" style="width: 1.3em; height: 1.3em"></span>'
+        }
+    }
+</script>

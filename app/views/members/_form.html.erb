@@ -1,0 +1,126 @@
+<div class="container p-4">
+
+  <div class="d-flex flex-column justify-content-center min-vh-100">
+
+    <div class="row justify-content-center">
+      <div class="col text-center">
+        <%= link_to "debbis", root_path, class: "text-light text-decoration-none",
+                    style: "font-size: 5em; font-family: Montserrat-Black, sans-serif;" %>
+      </div>
+    </div>
+
+    <%= form_for @member do |f| %>
+      <div class="row g-3 justify-content-center" style="margin-bottom: 1em;">
+        <div class="col-md-3">
+          <div class="form-floating mb-3">
+            <%= f.text_field :identity, class: 'form-control form-control-lg', id: "identity",
+                             spellcheck: "false" %>
+            <label for="identity" id="identity-label" class="text-secondary">Identity</label>
+          </div>
+        </div>
+
+        <div class="col-md-3" style="">
+          <div class="form-floating mb-3">
+            <%= f.text_field :name, class: 'form-control form-control-lg', id: "name",
+                             spellcheck: "false" %>
+            <label for="name" id="name-label" class="text-secondary">Name</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="row g-3 justify-content-center" style="margin-bottom: 1em;">
+        <div class="col-md-2">
+          <div class="form-floating mb-3">
+            <%= f.text_field :node, class: 'form-control form-control-lg', id: "node",
+                             spellcheck: "false" %>
+            <label for="node" id="node-label" class="text-secondary">Node</label>
+          </div>
+        </div>
+
+        <div class="col-md-2" style="">
+          <div class="form-floating mb-3">
+            <%= f.text_field :gender, class: 'form-control form-control-lg', id: "gender",
+                             spellcheck: "false" %>
+            <label for="gender" id="gender-label" class="text-secondary">Gender</label>
+          </div>
+        </div>
+
+        <div class="col-md-2" style="">
+          <div class="form-floating mb-3">
+            <%= f.text_field :age, class: 'form-control form-control-lg', id: "age",
+                             spellcheck: "false" %>
+            <label for="age" id="age-label" class="text-secondary">Age</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="row g-3 justify-content-center" style="margin-bottom: 0.7em">
+        <div class="col-md-6 m-0">
+          <%= f.submit local_assigns[:submit_label], class: "btn btn-lg btn-block w-100 fw-bolder", id: "submit-id",
+                       style: "background-color: #ffa200; margin-top: 1em" %>
+        </div>
+      </div>
+
+    <% end %>
+
+    <div class="row justify-content-center">
+      <div class="col-md-6 text-center">
+        <hr style="margin-bottom: 8px; margin-top: 8px; color: #666666;">
+        <%= render "shared/menu" %>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+
+    var submit = document.getElementById('submit-id')
+
+    let identity = document.getElementById('identity')
+    let identity_label = document.getElementById('identity-label')
+    submit.disabled = identity.value === "";
+
+    let node = document.getElementById('node')
+    let node_label = document.getElementById('node-label')
+    submit.disabled = node.value === "";
+
+    identity.addEventListener('keyup', function () {
+        identity.value = identity.value.replace(/\s+/g,'')
+        if (identity.value === '') {
+            submit.disabled = true
+        } else {
+            let disable = proof(identity, submit, identity_label, "Identity")
+            if (node.value !== '') {
+                submit.disabled = disable
+            }
+        }
+    })
+
+    node.addEventListener('keyup', function () {
+        node.value = node.value.replace(/\s+/g,'')
+        if (node.value === '') {
+            submit.disabled = true
+        } else {
+            let disable = proof(node, submit, node_label, "Node")
+            if (identity.value !== '') {
+                submit.disabled = disable
+            }
+        }
+    })
+
+    function proof(e, submit, label, pre) {
+        let format = /^[0-9]*$/
+        if (!format.test(e.value)) {
+            label.innerText = "Incorrect character"
+            label.className= "text-danger"
+            return true
+        }
+        else {
+            label.innerText = pre
+            label.className= "text-secondary"
+            return false
+        }
+    }
+</script>

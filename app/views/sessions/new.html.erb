@@ -1,0 +1,47 @@
+<div class="container">
+
+  <div class="d-flex flex-column justify-content-center min-vh-100">
+
+    <div class="row g-3 justify-content-center" style="margin-bottom: 0.7em;">
+      <div class="col-md-4 text-center" style="font-size: 2em;">
+        <strong class="text-gray">Log In as Super User</strong>
+      </div>
+    </div>
+
+    <%= form_with(url: login_path, scope: :session, local: true) do |f| %>
+      <div class="row g-3 justify-content-center" style="">
+        <div class="col-md-4" style="">
+          <div class="form-floating mb-3">
+            <%= f.text_field :username, class: 'form-control form-control-lg', id: "username",
+                             spellcheck: "false" %>
+            <label for="username" id="username-label" class="text-secondary">Username</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="row g-3 justify-content-center" style="margin-bottom: 0.7em;">
+        <div class="col-md-4">
+          <div class="form-floating mb-3">
+            <%= f.password_field :password, class: 'form-control form-control-lg', id: "password",
+                                 spellcheck: "false" %>
+            <label for="password" id="password-label" class="text-secondary">Password</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="row g-3 justify-content-center" style="margin-bottom: 0.7em">
+        <div class="col-md-4 m-0">
+          <%= f.submit "Log In", class: "btn btn-lg btn-yellow btn-block w-100 fw-bolder mt-2 mb-3" %>
+        </div>
+      </div>
+    <% end %>
+
+    <div class="row justify-content-center">
+      <div class="col-md-4 text-center">
+        <hr style="margin-bottom: 8px; margin-top: 8px; color: #666666;">
+        <%= render "shared/menu" %>
+      </div>
+    </div>
+
+  </div>
+</div>

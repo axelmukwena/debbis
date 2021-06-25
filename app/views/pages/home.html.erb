@@ -1,0 +1,71 @@
+<div class="container">
+
+  <div class="d-flex flex-column justify-content-center min-vh-100">
+
+    <div class="row justify-content-center">
+      <div class="col text-center">
+        <div class="text-light identity" id="identity" style="font-family: Montserrat-Black, sans-serif;">
+          <span class="bi bi-circle-fill spinner-color" style="width: 1.3em; height: 1.3em"></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col text-center">
+        <%= link_to "debbis", root_path, class: "text-light text-decoration-none",
+                    style: "font-size: 5em; font-family: Montserrat-Black, sans-serif;" %>
+      </div>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-md-4 text-left" style="margin-bottom: 1em">
+
+        <%= form_with url: verify_path, method: :post do |f| %>
+          <div class="input-group">
+            <%= f.file_field :signals, accept: "text/plain", class: "form-control form-custom",
+                             id: "input-file", "aria-label": "Upload" %>
+          </div>
+
+          <span class="text-danger" id="toggle-error" style="font-size: 0.8em">
+            Please input data file
+          </span>
+          <button class="btn btn-lg btn-block w-100 fw-bolder" type="button" id="submit"
+                  style="background-color: #ffa200; margin-top: 1em"></button>
+
+          <%= f.submit "Validate", class: "btn btn-yellow", id: "validate", hidden: "hidden"%>
+        <% end %>
+
+      </div>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-md-4 text-center">
+        <hr style="margin-bottom: 8px; margin-top: 8px; color: #666666;">
+        <%= render "shared/menu" %>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+    document.getElementById('toggle-error').hidden = true
+    var submitBtn = document.getElementById("submit")
+    submitBtn.innerHTML = "Access"
+    submitBtn.addEventListener("click", function () {
+        proof()
+    })
+
+    function proof() {
+        if (document.getElementById('input-file').value === "") {
+            document.getElementById('toggle-error').hidden = false
+        }
+        else {
+            document.getElementById('toggle-error').hidden = true
+            submitBtn.innerHTML = 'Validating'
+            document.getElementById("validate").click()
+            document.getElementById("identity").innerHTML = '<span class="spinner-grow spinner-color" style="width: 1.3em; height: 1.3em"></span>'
+        }
+    }
+</script>

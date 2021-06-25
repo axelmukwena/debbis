@@ -1,0 +1,10 @@
+<%= link_to "Home", root_path, class: "p-2 text-gray small text-decoration-none" %>
+<%= link_to "Help", how_path, class: "p-2 text-gray small text-decoration-none" %>
+<% if logged_in? %>
+  <%= link_to "Enroll", new_member_path, class: "p-2 text-gray small text-decoration-none" %>
+  <%= link_to @count.to_s + " Members", members_path, class: "p-2 text-gray small text-decoration-none" %>
+  <%= link_to "Log Out", logout_path, method: :delete, class: "p-2 text-gray small text-decoration-none" %>
+<% else %>
+  <%= link_to "Log In", login_path, class: "p-2 text-gray small text-decoration-none" %>
+  <%= link_to "Sign up", signup_path, class: "p-2 text-gray small text-decoration-none" %>
+<% end %>
